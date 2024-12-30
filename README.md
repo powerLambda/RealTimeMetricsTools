@@ -1,3 +1,9 @@
+
+How to build
+```
+docker build -t rtme-tools:latest -f webapp.Dockerfile ./
+```
+
 To start Kafka:
 
 ```
