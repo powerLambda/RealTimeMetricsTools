@@ -36,6 +36,7 @@ const iconMap: {
 } = {
   aggregateFieldName: faFont,
   aggregatorFunctionType: faCalculator,
+  windowType: faCalculator,
   groupingKeyNames: faLayerGroup,
   limit: faArrowUp,
   limitOperatorType: faLaptopCode,
@@ -86,6 +87,7 @@ const RuleTable = styled(Table)`
 
 const fields = [
   "aggregatorFunctionType",
+  "windowType",
   "aggregateFieldName",
   "groupingKeyNames",
   "limitOperatorType",
@@ -159,6 +161,7 @@ export const Rules: FC<Props> = props => {
               </RuleTable>
             </CardBody>
             <CardFooter style={{ padding: "0.3rem" }}>
+              Using a <em>{payload.windowType}</em>, the
               <em>{payload.aggregatorFunctionType}</em> of <em>{payload.aggregateFieldName}</em> aggregated by "
               <em>{payload.groupingKeyNames.join(", ")}</em>" is <em>{payload.limitOperatorType}</em>{" "}
               {seperator[payload.limitOperatorType]} <em>{payload.limit}</em> within an interval of{" "}

@@ -43,11 +43,12 @@ public class RulesBootstrapper implements ApplicationRunner {
         "{\"ruleId\":\"1\","
             + "\"aggregateFieldName\":\"paymentAmount\","
             + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"payeeId\", \"beneficiaryId\"],"
             + "\"limit\":\"20000000\","
             + "\"limitOperatorType\":\"GREATER\","
             + "\"ruleState\":\"ACTIVE\","
-            + "\"windowMinutes\":\"43200\"}";
+            + "\"windowMinutes\":\"1440\"}";
 
     Rule rule1 = new Rule(payload1);
 
@@ -55,6 +56,7 @@ public class RulesBootstrapper implements ApplicationRunner {
         "{\"ruleId\":\"2\","
             + "\"aggregateFieldName\":\"COUNT_FLINK\","
             + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"paymentType\"],"
             + "\"limit\":\"300\","
             + "\"limitOperatorType\":\"LESS\","
@@ -67,6 +69,7 @@ public class RulesBootstrapper implements ApplicationRunner {
         "{\"ruleId\":\"3\","
             + "\"aggregateFieldName\":\"paymentAmount\","
             + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"beneficiaryId\"],"
             + "\"limit\":\"10000000\","
             + "\"limitOperatorType\":\"GREATER_EQUAL\","
@@ -79,6 +82,7 @@ public class RulesBootstrapper implements ApplicationRunner {
         "{\"ruleId\":\"4\","
             + "\"aggregateFieldName\":\"COUNT_WITH_RESET_FLINK\","
             + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"paymentType\"],"
             + "\"limit\":\"100\","
             + "\"limitOperatorType\":\"GREATER_EQUAL\","

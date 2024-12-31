@@ -14,4 +14,5 @@ export interface RulePayload {
   limitOperatorType: string;
   windowMinutes: number;
   ruleState: string;
+  windowType: string;
 }
