@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useRef, useState, ChangeEvent} from "react";
 import {
   faArrowRight,
   faCreditCard,
@@ -125,10 +125,13 @@ export const Transactions = React.memo(
     const addTransaction = (transaction: Transaction) => setTransactions(state => [...state.slice(-33), transaction]);
 
     const [generatorSpeed, setGeneratorSpeed] = useLocalStorage("generatorSpeed", 1);
-    const handleSliderChange = (val: number) => setGeneratorSpeed(val);
+    const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const value = Number(event.target.value); // 从事件中获取值并转换为数字
+        setGeneratorSpeed(value);
+    }
 
     useUpdateEffect(() => {
-      fetch(`/api/generatorSpeed/${getFakeValue(generatorSpeed)}`);
+      fetch(`/api/generatorSpeed/${generatorSpeed}`);
     }, [generatorSpeed]);
 
     const renderRow: ListRowRenderer = ({ key, index, style }) => {
@@ -154,14 +157,15 @@ export const Transactions = React.memo(
           <TransactionsCard innerRef={ref}>
             <CardHeader className="d-flex align-items-center py-0 justify-content-between">
               <div style={{ width: 160 }} className="mr-3 d-inline-block">
-                <Slider
-                  value={generatorSpeed}
-                  onChange={handleSliderChange}
-                  max={30}
-                  min={0}
-                  tooltip={false}
-                  step={1}
-                />
+                  <input
+                      type="number"
+                      value={generatorSpeed}
+                      onChange={handleSliderChange}
+                      max={1000000}
+                      min={0}
+                      step={1}
+                      style={{ width: '100%' }} // 使输入框宽度适应父容器
+                  />
               </div>
               <span>{getFakeValue(generatorSpeed)}</span>
             </CardHeader>
