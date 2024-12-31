@@ -73,6 +73,13 @@ public class RulePayload {
     MAX
   }
 
+  public enum WindowType {
+    GROWTH_WINDOW,
+    TUMBLING_WINDOWS,
+    SLIDING_WINDOW,
+    SESSION_WINDOW
+  }
+
   public enum LimitOperatorType {
     EQUAL("="),
     NOT_EQUAL("!="),
