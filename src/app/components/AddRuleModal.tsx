@@ -39,7 +39,7 @@ const sampleRules: {
 } = {
   1: {
     aggregateFieldName: "paymentAmount",
-    aggregatorFunctionType: "SUM",
+    aggregatorFunctionType: "COUNT",
     windowType: "GROWTH_WINDOW",
     groupingKeyNames: ["payeeId", "beneficiaryId"],
     limit: 20000000,
@@ -49,7 +49,7 @@ const sampleRules: {
   },
    2: {
      aggregateFieldName: "paymentAmount",
-     aggregatorFunctionType: "SUM",
+     aggregatorFunctionType: "COUNT",
      windowType: "GROWTH_WINDOW",
      groupingKeyNames: ["beneficiaryId"],
      limit: 10000000,
@@ -59,7 +59,7 @@ const sampleRules: {
    },
   3: {
     aggregateFieldName: "COUNT_WITH_RESET_FLINK",
-    aggregatorFunctionType: "SUM",
+    aggregatorFunctionType: "COUNT",
     windowType: "GROWTH_WINDOW",
     groupingKeyNames: ["paymentType"],
     limit: 100,
@@ -135,6 +135,7 @@ export const AddRuleModal: FC<Props> = props => {
               <option value="AVG">AVG</option>
               <option value="MIN">MIN</option>
               <option value="MAX">MAX</option>
+              <option value="COUNT">COUNT</option>
             </Input>
           </FieldGroup>
 
