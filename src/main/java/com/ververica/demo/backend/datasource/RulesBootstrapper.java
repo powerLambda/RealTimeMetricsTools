@@ -42,7 +42,7 @@ public class RulesBootstrapper implements ApplicationRunner {
     String payload1 =
         "{\"ruleId\":\"1\","
             + "\"aggregateFieldName\":\"paymentAmount\","
-            + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"aggregatorFunctionType\":\"COUNT\","
             + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"payeeId\", \"beneficiaryId\"],"
             + "\"limit\":\"20000000\","
@@ -55,7 +55,7 @@ public class RulesBootstrapper implements ApplicationRunner {
     String payload2 =
         "{\"ruleId\":\"2\","
             + "\"aggregateFieldName\":\"COUNT_FLINK\","
-            + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"aggregatorFunctionType\":\"COUNT\","
             + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"paymentType\"],"
             + "\"limit\":\"300\","
@@ -68,7 +68,7 @@ public class RulesBootstrapper implements ApplicationRunner {
     String payload3 =
         "{\"ruleId\":\"3\","
             + "\"aggregateFieldName\":\"paymentAmount\","
-            + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"aggregatorFunctionType\":\"COUNT\","
             + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"beneficiaryId\"],"
             + "\"limit\":\"10000000\","
@@ -81,7 +81,7 @@ public class RulesBootstrapper implements ApplicationRunner {
     String payload4 =
         "{\"ruleId\":\"4\","
             + "\"aggregateFieldName\":\"COUNT_WITH_RESET_FLINK\","
-            + "\"aggregatorFunctionType\":\"SUM\","
+            + "\"aggregatorFunctionType\":\"COUNT\","
             + "\"windowType\":\"GROWTH_WINDOW\","
             + "\"groupingKeyNames\":[\"paymentType\"],"
             + "\"limit\":\"100\","

@@ -41,7 +41,7 @@ public class RulePayload {
   private BigDecimal limit;
   private Integer windowMinutes;
   private ControlType controlType;
-
+  private WindowType windowType;
   /**
    * Evaluates this rule by comparing provided value with rules' limit based on limit operator type.
    *
@@ -70,7 +70,8 @@ public class RulePayload {
     SUM,
     AVG,
     MIN,
-    MAX
+    MAX,
+    COUNT
   }
 
   public enum WindowType {

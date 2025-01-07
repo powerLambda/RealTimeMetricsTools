@@ -4,7 +4,7 @@ WORKDIR /home/node/app
 
 COPY package.json package-lock.json tsconfig.json ./
 COPY scripts scripts
-RUN npm ci --unsafe-perm
+RUN npm ci --unsafe-perm --loglevel=verbose
 COPY public public
 COPY src/app src/app
 COPY src/index.tsx src
