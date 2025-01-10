@@ -41,6 +41,8 @@ const iconMap: {
   limit: faArrowUp,
   limitOperatorType: faLaptopCode,
   windowMinutes: faClock,
+  metricsOutTags: faLayerGroup,
+  metricsCode: faCalculator
 };
 
 const seperator: {
@@ -93,6 +95,8 @@ const fields = [
   "limitOperatorType",
   "limit",
   "windowMinutes",
+  "metricsOutTags",
+  "metricsCode"
 ];
 
 // const omitFields = omit(["ruleId", "ruleState", "unique"]);
@@ -160,12 +164,13 @@ export const Rules: FC<Props> = props => {
                 </tbody>
               </RuleTable>
             </CardBody>
-            <CardFooter style={{ padding: "0.3rem" }}>
+            <CardFooter style={{padding: "0.3rem"}}>
               Using a <em>{payload.windowType}</em>, the
               <em>{payload.aggregatorFunctionType}</em> of <em>{payload.aggregateFieldName}</em> aggregated by "
               <em>{payload.groupingKeyNames.join(", ")}</em>" is <em>{payload.limitOperatorType}</em>{" "}
               {seperator[payload.limitOperatorType]} <em>{payload.limit}</em> within an interval of{" "}
-              <em>{payload.windowMinutes}</em> minutes.
+              <em>{payload.windowMinutes}</em> minutes. The <em>{payload.metricsCode}</em> are output
+              to <em>{payload.metricsOutTags.join(", ")}</em>
             </CardFooter>
           </CenteredContainer>
         );

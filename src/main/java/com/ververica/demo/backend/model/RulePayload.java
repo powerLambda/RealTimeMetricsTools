@@ -42,6 +42,8 @@ public class RulePayload {
   private Integer windowMinutes;
   private ControlType controlType;
   private WindowType windowType;
+  private List<MetricsOutTag> metricsOutTags;
+  private MetricsCode metricsCode;
   /**
    * Evaluates this rule by comparing provided value with rules' limit based on limit operator type.
    *
@@ -117,5 +119,17 @@ public class RulePayload {
     CLEAR_STATE_ALL_STOP,
     DELETE_RULES_ALL,
     EXPORT_RULES_CURRENT
+  }
+
+  public enum MetricsOutTag {
+    InMemoryDB,
+    TimeSeriesDB,
+    MessageQueue
+  }
+
+  public enum MetricsCode {
+    TotalNumberCallRing,
+    TotalNumberInternalCalls,
+    CurrentIdleAgent
   }
 }

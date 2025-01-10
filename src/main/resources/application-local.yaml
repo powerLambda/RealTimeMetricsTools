@@ -15,7 +15,7 @@ kafka:
   listeners:
     transactions.id: transactions-listener
 
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: kafka-cp-kafka-headless:9092
 
 web-socket:
   topic:
@@ -31,6 +31,6 @@ spring:
   autoconfigure.exclude: org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration
   kafka:
     producer:
-      bootstrap-servers: localhost:9092
+      bootstrap-servers: kafka-cp-kafka-headless:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

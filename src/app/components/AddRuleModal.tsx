@@ -26,7 +26,9 @@ const pickFields = pick([
   "limit",
   "limitOperatorType",
   "ruleState",
-  "windowMinutes"
+  "windowMinutes",
+  "metricsOutTags",
+  "metricsCode"
 ]);
 
 type ResponseError = {
@@ -46,6 +48,8 @@ const sampleRules: {
     limitOperatorType: "GREATER",
     windowMinutes: 1440,
     ruleState: "ACTIVE",
+    metricsOutTags: ["MessageQueue"],
+    metricsCode: "TotalNumberCallRing"
   },
    2: {
      aggregateFieldName: "paymentAmount",
@@ -56,6 +60,8 @@ const sampleRules: {
      limitOperatorType: "GREATER_EQUAL",
      windowMinutes: 1440,
      ruleState: "ACTIVE",
+     metricsOutTags: ["MessageQueue"],
+     metricsCode: "TotalNumberCallRing"
    },
   3: {
     aggregateFieldName: "COUNT_WITH_RESET_FLINK",
@@ -66,12 +72,15 @@ const sampleRules: {
     limitOperatorType: "GREATER_EQUAL",
     windowMinutes: 1440,
     ruleState: "ACTIVE",
+    metricsOutTags: ["MessageQueue"],
+    metricsCode: "TotalNumberCallRing"
   },
 
 };
 
 const keywords = ["beneficiaryId", "payeeId", "paymentAmount", "paymentType"];
 const aggregateKeywords = ["paymentAmount", "COUNT_FLINK", "COUNT_WITH_RESET_FLINK"];
+const metricsOutTags = ["InMemoryDB", "TimeSeriesDB", "MessageQueue"];
 
 const MySelect = React.memo(CreatableSelect);
 
@@ -87,7 +96,7 @@ export const AddRuleModal: FC<Props> = props => {
     e.preventDefault();
     const data = pickFields(getFormData(e.target)) as RulePayload;
     data.groupingKeyNames = isArray(data.groupingKeyNames) ? data.groupingKeyNames : [data.groupingKeyNames];
-
+    data.metricsOutTags = isArray(data.metricsOutTags) ? data.metricsOutTags : [data.metricsOutTags];
     const rulePayload = JSON.stringify(data);
     const body = JSON.stringify({ rulePayload });
 
@@ -183,6 +192,24 @@ export const AddRuleModal: FC<Props> = props => {
           </FieldGroup>
           <FieldGroup label="windowMinutes" icon={faClock}>
             <Input name="windowMinutes" bsSize="sm" type="number" />
+          </FieldGroup>
+
+          <FieldGroup label="metricsOutTags" icon={faLayerGroup}>
+            <MySelect
+                isMulti={true}
+                name="metricsOutTags"
+                className="react-select"
+                classNamePrefix="react-select"
+                options={metricsOutTags.map(k => ({ value: k, label: k }))}
+            />
+          </FieldGroup>
+
+          <FieldGroup label="metricsCode" icon={faCalculator}>
+            <Input type="select" name="metricsCode" bsSize="sm">
+              <option value="TotalNumberCallRing">TotalNumberCallRing</option>
+              <option value="TotalNumberInternalCalls">TotalNumberInternalCalls</option>
+              <option value="CurrentIdleAgent">CurrentIdleAgent</option>
+            </Input>
           </FieldGroup>
         </ModalBody>
         <ModalFooter className="justify-content-between">

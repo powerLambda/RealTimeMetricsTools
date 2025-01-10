@@ -1,7 +1,10 @@
 
 How to build
 ```
-docker build -t rtme-tools:latest -f webapp.Dockerfile ./
+local env:
+    docker build -t rtme-tools:latest -f webapp-local.Dockerfile ./
+dev evn:
+    docker build -t rtme-tools:latest -f webapp-dev.Dockerfile ./
 ```
 
 To start Kafka:
@@ -52,7 +55,8 @@ Example Rule JSON:
    "aggregatorFunctionType":"SUM",
    "limitOperatorType":"GREATER",
    "limit":50,
-   "windowMinutes":20
+   "windowMinutes":20,
+   "metricsOutTags":["MessageQueue"]
 }
 ```
 

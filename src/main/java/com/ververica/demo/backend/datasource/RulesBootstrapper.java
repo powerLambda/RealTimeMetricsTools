@@ -48,7 +48,9 @@ public class RulesBootstrapper implements ApplicationRunner {
             + "\"limit\":\"20000000\","
             + "\"limitOperatorType\":\"GREATER\","
             + "\"ruleState\":\"ACTIVE\","
-            + "\"windowMinutes\":\"1440\"}";
+            + "\"windowMinutes\":\"1440\","
+            + "\"metricsOutTags\":[\"MessageQueue\"],"
+            + "\"metricsCode\":\"TotalNumberCallRing\"}";
 
     Rule rule1 = new Rule(payload1);
 
@@ -61,7 +63,9 @@ public class RulesBootstrapper implements ApplicationRunner {
             + "\"limit\":\"300\","
             + "\"limitOperatorType\":\"LESS\","
             + "\"ruleState\":\"PAUSE\","
-            + "\"windowMinutes\":\"1440\"}";
+            + "\"windowMinutes\":\"1440\","
+            + "\"metricsOutTags\":[\"MessageQueue\"],"
+            + "\"metricsCode\":\"TotalNumberCallRing\"}";
 
     Rule rule2 = new Rule(payload2);
 
@@ -74,7 +78,9 @@ public class RulesBootstrapper implements ApplicationRunner {
             + "\"limit\":\"10000000\","
             + "\"limitOperatorType\":\"GREATER_EQUAL\","
             + "\"ruleState\":\"ACTIVE\","
-            + "\"windowMinutes\":\"1440\"}";
+            + "\"windowMinutes\":\"1440\","
+            + "\"metricsOutTags\":[\"MessageQueue\"],"
+            + "\"metricsCode\":\"TotalNumberCallRing\"}";
 
     Rule rule3 = new Rule(payload3);
 
@@ -87,7 +93,9 @@ public class RulesBootstrapper implements ApplicationRunner {
             + "\"limit\":\"100\","
             + "\"limitOperatorType\":\"GREATER_EQUAL\","
             + "\"ruleState\":\"ACTIVE\","
-            + "\"windowMinutes\":\"1440\"}";
+            + "\"windowMinutes\":\"1440\","
+            + "\"metricsOutTags\":[\"MessageQueue\"],"
+            + "\"metricsCode\":\"TotalNumberCallRing\"}";
 
     Rule rule4 = new Rule(payload4);
 
