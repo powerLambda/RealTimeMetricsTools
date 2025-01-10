@@ -15,4 +15,6 @@ export interface RulePayload {
   windowMinutes: number;
   ruleState: string;
   windowType: string;
+  metricsOutTags: string[];
+  metricsCode: string;
 }
